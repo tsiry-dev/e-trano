@@ -1,5 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import LoginView from '@/views/pages/auth/LoginView.vue';
+import RegisterView from '@/views/pages/auth/RegisterView.vue';
+import CGUView from '@/views/pages/CGUView.vue';
+import ServiceView from '@/views/pages/services/ServiceView.vue';
+import HouseView from '@/views/pages/house/HouseView.vue';
+import ContactView from '@/views/pages/contacts/ContactView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +23,51 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
+    {
+      path: '/houses',
+      name: 'houses',
+      component: HouseView
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: ServiceView
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: ContactView
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView
+    },
+    {
+      path: '/condion-generale-d-utilisation',
+      name: 'cgu',
+      component: CGUView
+    },
+      {
+        path: '/:pathMatch(.*)*',
+        name: 'not-found',
+        component: () => import('@/views/pages/PageNotFound.vue')
+      }
   ],
-})
+});
+
+
+router.beforeEach((to, from, next) => {
+   //Redirect to profile if user id connected
+   //Redirect to login if user not connected
+   //vérify user role
+
+   return next();
+});
 
 export default router

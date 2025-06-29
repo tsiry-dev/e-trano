@@ -1,0 +1,22 @@
+$color-primary: #e0d312;
+$color-white: #fff;
+
+//Breakpoints
+$lg: 850px;
+
+
+.section {
+    margin: 2rem 0;
+    
+   @media (max-width: $lg) {
+      padding: 2rem;
+      margin-top: 6rem;
+   }
+
+    &-title {
+        font-size: 1.3rem;
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+}
