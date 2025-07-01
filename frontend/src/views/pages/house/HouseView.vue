@@ -3,8 +3,8 @@ import FormInput from '@/components/forms/FormInput.vue';
 import FormItem from '@/components/forms/FormItem.vue';
 import FormLabel from '@/components/forms/FormLabel.vue';
 import CardSm from '@/components/ui/card/CardSm.vue';
-import HouseItem from './HouseItem.vue';
 import BtnPrimary from '@/components/ui/buttons/BtnPrimary.vue';
+import HouseItem from './HouseItem.vue';
 
 const houses = [
    {
@@ -75,25 +75,46 @@ const houses = [
     <!-- Barre latérale -->
     <aside class="w-full md:w-1/3 lg:w-1/4p-4">
         <div class="flex justify-between items-center mb-4">
-            <h2 class="filtre">Filtres</h2>
+            <h2 class="filtre text-2xl">Filtres</h2>
             <span class="bg-gray-300 hover:bg-gray-200 text-sm px-4 py-2 rounded-lg border-1 border-gray-400 cursor-pointer">
                 <i class="pi pi-spinner-dotted text-gray-700"></i> &nbsp;
                 Réinitialiser
             </span>
         </div>
         
-        <CardSm>
-            <h3>Ville</h3>
-            <FormItem>
-                <FormInput name="city" type="text" placeholder="Ville" />
-            </FormItem>
-        </CardSm>
+        <form action="">
+            <CardSm class="mb-3">
+                <FormItem>
+                    <FormLabel name="city">Ville</FormLabel>
+                    <FormInput name="city" type="text" placeholder="Ville" />
+                </FormItem>
+            </CardSm>
+    
+            <CardSm>
+                <div class="grid grid-cols-2 gap-4">
+                    <FormItem>
+                        <FormLabel name="price">Prix min</FormLabel>
+                        <FormInput name="price" type="text" placeholder="Prix min" />
+                    </FormItem>
+                    <FormItem>
+                        <FormLabel name="price">Prix max</FormLabel>
+                        <FormInput name="price" type="text" placeholder="Prix max" />
+                    </FormItem>
+                </div>
+            </CardSm>
+
+            <div class="mt-3">
+                <BtnPrimary>Filtrer</BtnPrimary>
+            </div>
+        </form>
     </aside>
 
     <!-- Contenu principal -->
     <div class="flex-1">
         <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <HouseItem v-for="house in houses" :key="house.id" :house="house" />
+            <RouterLink :to="{ name: 'houses.show'}" v-for="house in houses" :key="house.id">
+                <HouseItem  :house="house" />
+            </RouterLink>
         </div>
     </div>
 </div>

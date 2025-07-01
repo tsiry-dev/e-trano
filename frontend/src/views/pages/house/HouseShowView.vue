@@ -1,7 +1,9 @@
 <script setup>
 import BtnPrimary from '@/components/ui/buttons/BtnPrimary.vue';
 import CardSm from '@/components/ui/card/CardSm.vue';
-import { VMap, VMapOsmTileLayer, VMapZoomControl } from 'vue-map-ui';
+import { ref } from 'vue';
+import { VMap, VMapMarker, VMapOsmTileLayer, VMapZoomControl, VMapArcGisTileLayer } from 'vue-map-ui';
+
 
 
 
@@ -22,6 +24,9 @@ const offres = [
   'Salle de sport',
   '1 garages',
 ];
+
+const mapCenter = ref([-18.91667, 47.46667]);
+const zoomLevel = ref(13);
 
 
 </script>
@@ -66,18 +71,32 @@ const offres = [
                     <div><img :src="house.image" alt="" class="w-full"></div>
                 </div>
                 <div class="text-center mt-4">
-                    <BtnPrimary>
-                        Afficher tous les images
-                    </BtnPrimary>
+                    <RouterLink :to="{ name: 'houses.gallery'}" class="text-gray-600 text-sm">
+                        <BtnPrimary>
+                            Afficher tous les images
+                        </BtnPrimary>
+                    </RouterLink>
                 </div>
             </div>
         </div>
     </CardSm>
 
-    <VMap style="height: 200px;">
-    <VMapOsmTileLayer />
-    <VMapZoomControl />
-  </VMap>
+    <div class="my-15">
+        <div class="mb-3">
+            <span class="mb-3 text-xl bg-green-400 px-2 py-2 rounded-2xl">
+              <i class="pi pi-map "></i>
+              &nbsp; Localisation
+            </span>
+        </div>
+        <VMap style="height: 400px;"  
+              :center="mapCenter"  
+              :zoom="zoomLevel"  
+        >
+            <VMapOsmTileLayer />
+            <VMapZoomControl  />
+            <VMapMarker :latlng="[-18.91667,47.46667]"/>
+        </VMap>
+    </div>
 
  </section>
 </template>

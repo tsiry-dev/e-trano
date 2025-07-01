@@ -6,6 +6,8 @@ import CGUView from '@/views/pages/CGUView.vue';
 import ServiceView from '@/views/pages/services/ServiceView.vue';
 import HouseView from '@/views/pages/house/HouseView.vue';
 import ContactView from '@/views/pages/contacts/ContactView.vue';
+import HouseShowView from '@/views/pages/house/HouseShowView.vue';
+import HouseGallery from '@/views/pages/house/HouseGallery.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +29,16 @@ const router = createRouter({
       path: '/houses',
       name: 'houses',
       component: HouseView
+    },
+    {
+      path: '/houses/show',
+      name: 'houses.show',
+      component: HouseShowView
+    },
+    {
+      path: '/houses/gallery',
+      name: 'houses.gallery',
+      component: HouseGallery
     },
     {
       path: '/services',
