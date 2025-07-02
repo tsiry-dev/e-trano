@@ -1,6 +1,7 @@
 <script setup>
 import Nav from '@/components/Nav.vue'
 import Overlay from './components/Overlay.vue';
+import Footer from '@/components/Footer.vue';
 import { ref } from 'vue';
 import { watch } from 'vue';
 
@@ -34,6 +35,8 @@ watch(isActive, (newValue) => {
     <main>
       <RouterView />
     </main>
+
+    <Footer />
   </div>
 
   <Overlay v-if="isActive" @click="() => isActive = false"  />

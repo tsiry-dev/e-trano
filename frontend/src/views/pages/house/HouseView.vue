@@ -60,6 +60,33 @@ const houses = [
       price: 350000,
       stars: 2,
       image: 'https://i.pinimg.com/736x/1b/28/01/1b28015c3b941d74e552aa373db352c7.jpg'
+   },
+   {
+      id: 7,
+      name: 'Mandraka',
+      address: 'IAA mandraka ambany 002',
+      city: 'Antananarivo',
+      price: 350000,
+      stars: 2,
+      image: 'https://i.pinimg.com/736x/1b/28/01/1b28015c3b941d74e552aa373db352c7.jpg'
+   },
+   {
+      id: 8,
+      name: 'Mandraka',
+      address: 'IAA mandraka ambany 002',
+      city: 'Antananarivo',
+      price: 350000,
+      stars: 2,
+      image: 'https://i.pinimg.com/736x/1b/28/01/1b28015c3b941d74e552aa373db352c7.jpg'
+   },
+   {
+      id: 9,
+      name: 'Mandraka',
+      address: 'IAA mandraka ambany 002',
+      city: 'Antananarivo',
+      price: 350000,
+      stars: 2,
+      image: 'https://i.pinimg.com/736x/1b/28/01/1b28015c3b941d74e552aa373db352c7.jpg'
    }
 ]       
 
@@ -110,7 +137,7 @@ const houses = [
     </aside>
 
     <!-- Contenu principal -->
-    <div class="flex-1">
+    <div class="house-content flex-1 h-[600px] overflow-y-scroll">
         <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <RouterLink :to="{ name: 'houses.show'}" v-for="house in houses" :key="house.id">
                 <HouseItem  :house="house" />
@@ -122,5 +149,19 @@ const houses = [
 </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.house {
+     &-content::-webkit-scrollbar{
+        background: transparent;
+        width: .8rem;
+        margin: .5rem;
+     }
+
+     &-content::-webkit-scrollbar-thumb {
+        background: rgb(163, 163, 160);
+        width: 1rem;
+        border-radius: 2rem;
+     }
+}
+
 </style>

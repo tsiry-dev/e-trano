@@ -13,3 +13,14 @@
 .bg-primary-hover {
   @apply hover:bg-amber-300; /* C'est la couleur sur hover */
 }
+
+body::-webkit-scrollbar {
+   background: transparent;
+   width: 1rem;
+}
+
+body::-webkit-scrollbar-thumb {
+   background: gold;
+   width: 1rem;
+   border-radius: 2rem;
+}
