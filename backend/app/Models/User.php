@@ -12,6 +12,10 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+
+    const IS_EMAIL_VALID = 1;
+    const IS_EMAIL_NOT_VALID = 0;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +25,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_emailValid',
+        'remember_token'
     ];
 
     /**
