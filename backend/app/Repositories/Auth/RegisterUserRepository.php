@@ -5,7 +5,7 @@ namespace App\Repositories\Auth;
 use App\Dtos\Auth\RegisterDto;
 use App\Models\User;
 
-class RegisterRepository
+class RegisterUserRepository
 {
     public function store(RegisterDto $data): User
     {

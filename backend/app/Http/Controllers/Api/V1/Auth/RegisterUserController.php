@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\Api\V1\Auth;
 
-use App\Actions\Auth\RegisterAction;
+use App\Actions\Auth\RegisterUserAction;
+use App\Actions\Auth\VerifyEmailAction;
 use App\Dtos\Auth\RegisterDto;
 use App\Events\Auth\NewUserCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\Auth\RegisterResource;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+
+class RegisterUserController extends Controller
 {
-    public function store(RegisterRequest $request, RegisterAction $action)
+    public function store(RegisterRequest $request, RegisterUserAction $action)
     {
         $user = $action->handle(RegisterDto::fromArray($request->validated()));
         NewUserCreated::dispatch($user);
@@ -23,5 +22,12 @@ class RegisterController extends Controller
             'message' => 'Votre compte a bien été créé avec succès, vérifiez votre email maintenant!!',
              'data' => new RegisterResource($user)
         ]);
+    }
+
+    public function verifyEmail(string $token, VerifyEmailAction $action)
+    {
+
+        $isVerify = $action->handle($token);
+        return redirect('http://localhost:5173/login');
     }
 }

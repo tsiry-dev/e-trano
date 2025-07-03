@@ -3,15 +3,15 @@
 namespace App\Actions\Auth;
 
 use App\Dtos\Auth\RegisterDto;
-use App\Repositories\Auth\RegisterRepository;
+use App\Repositories\Auth\RegisterUserRepository;
 
-class RegisterAction
+class RegisterUserAction
 {
     /**
      * Create a new class instance.
      */
     public function __construct(
-        protected RegisterRepository $repository
+        protected RegisterUserRepository $repository
     ){}
 
     public function handle(RegisterDto $data)
