@@ -18,4 +18,11 @@ class HouseReposirory
         ])->paginate($paginate);
         return $houses;
     }
+
+    public function findBySlug(string $slug): House|null
+    {
+        $house = House::where('slug', $slug)->first();
+
+        return $house;
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Resources\House;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class HouseResource extends JsonResource
+class HouseSingleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -24,8 +24,8 @@ class HouseResource extends JsonResource
             'description' => $this->description,
             'reservation_price' => $this->reservation_price,
             'status' => $this->status,
-            // 'localisation' => $this->whenLoaded('localisation'),
-             'picture' => $this->gallery->first()?->picture ?? 'No picture',
+            'localisation' => $this->whenLoaded('localisation'),
+            'gallery' => $this->whenLoaded('gallery')
         ];
     }
 }

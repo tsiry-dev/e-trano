@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
 
     Route::get('/houses', [HouseController::class, 'index']);
+    Route::get('/houses/{slug}', [HouseController::class, 'find']);
 
 
     Route::post('/user/register', [RegisterUserController::class, 'store']);
