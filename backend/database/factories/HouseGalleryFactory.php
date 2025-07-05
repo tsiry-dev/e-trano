@@ -22,7 +22,7 @@ class HouseGalleryFactory extends Factory
 
         return [
             'house_id' => $houses->random()->id,
-            'picture' => fake()->imageUrl(),
+            'picture' => 'https://i.pinimg.com/736x/3c/3b/0b/3c3b0b3df0405be64b39ce9586350305.jpg',
             'is_cover' => fake()->boolean(),
             'description' => fake()->text(),
         ];

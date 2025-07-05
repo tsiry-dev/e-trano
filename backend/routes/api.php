@@ -14,6 +14,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('/houses', [HouseController::class, 'index']);
     Route::get('/houses/{slug}', [HouseController::class, 'find']);
+    Route::get('/houses/gallery/{slug}', [HouseController::class, 'gallery']);
 
 
     Route::post('/user/register', [RegisterUserController::class, 'store']);
